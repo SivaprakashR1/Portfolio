@@ -1,5 +1,6 @@
 package com.sivaprakash.portfolio.Controller;
 
+import com.sivaprakash.portfolio.DTO.*;
 import com.sivaprakash.portfolio.Entity.*;
 import com.sivaprakash.portfolio.Service.ContactFormService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,24 +17,45 @@ public class PersonController {
     public PersonController(ContactFormService contactFormService) {
         this.contactFormService = contactFormService;
     }
+//    @GetMapping("/get-certification")
+//    public List<Certifications> getCertifications() {
+//        return contactFormService.getCertification();
+//    }
+//    @GetMapping("/get-education")
+//    public List<Education> getEducation() {
+//        return contactFormService.getEducation();
+//    }
+//    @GetMapping("/get-internship")
+//    public List<Internships> getInternship() {
+//        return contactFormService.getInternship();
+//    }
+//    @GetMapping("/get-language")
+//    public List<Languages> getLanguages() {
+//        return contactFormService.getLanguage();
+//    }
+//    @GetMapping("/get-project")
+//    public List<Project> getProject() {
+//        return contactFormService.getProject();
+//    }
+
     @GetMapping("/get-certification")
-    public List<Certifications> getCertifications() {
+    public List<CertificationDTO> getCertifications() {
         return contactFormService.getCertification();
     }
     @GetMapping("/get-education")
-    public List<Education> getEducation() {
+    public List<EducationDTO> getEducation() {
         return contactFormService.getEducation();
     }
     @GetMapping("/get-internship")
-    public List<Internships> getInternship() {
+    public List<InternshipDTO> getInternship() {
         return contactFormService.getInternship();
     }
     @GetMapping("/get-language")
-    public List<Languages> getLanguages() {
+    public List<LanguagesDTO> getLanguages() {
         return contactFormService.getLanguage();
     }
     @GetMapping("/get-project")
-    public List<Project> getProject() {
+    public List<ProjectDTO> getProject() {
         return contactFormService.getProject();
     }
 

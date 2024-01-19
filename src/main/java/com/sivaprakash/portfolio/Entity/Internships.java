@@ -9,6 +9,7 @@ import lombok.Data;
 @Entity
 @Data
 public class Internships {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

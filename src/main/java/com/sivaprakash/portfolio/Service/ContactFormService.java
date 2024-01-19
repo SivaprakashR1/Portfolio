@@ -1,6 +1,6 @@
 package com.sivaprakash.portfolio.Service;
 
-import com.sivaprakash.portfolio.DTO.ContactFormDTO;
+import com.sivaprakash.portfolio.DTO.*;
 import com.sivaprakash.portfolio.Entity.*;
 import com.sivaprakash.portfolio.Repository.*;
 import org.modelmapper.ModelMapper;
@@ -36,7 +36,6 @@ public class ContactFormService {
             this.projectRepository = projectRepository;
         }
 
-
     @Autowired
     private ModelMapper modelMapper;
 
@@ -47,14 +46,46 @@ public class ContactFormService {
         contactFormDTO = modelMapper.map(contactForm, ContactFormDTO.class);
         return contactFormDTO;
     }
-
-    private ContactForm convertDtoToEntity(ContactFormDTO contactFormDTO) {
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
-        ContactForm contactForm = new ContactForm();
-        modelMapper.map(contactFormDTO, contactForm);
-        return contactForm;
+    public CertificationDTO convertEntityToDto(Certifications certifications) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        CertificationDTO certificationDTO = new CertificationDTO();
+        certificationDTO = modelMapper.map(certifications, CertificationDTO.class);
+        return certificationDTO;
+    }
+    public EducationDTO convertEntityToDto(Education education) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        EducationDTO educationDTO = new EducationDTO();
+        educationDTO = modelMapper.map(education, EducationDTO.class);
+        return educationDTO;
+    }
+    public InternshipDTO convertEntityToDto(Internships internships) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        InternshipDTO internshipDTO = new InternshipDTO();
+        internshipDTO = modelMapper.map(internships, InternshipDTO.class);
+        return internshipDTO;
+    }
+    public LanguagesDTO convertEntityToDto(Languages languages) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        LanguagesDTO languagesDTO = new LanguagesDTO();
+        languagesDTO = modelMapper.map(languages, LanguagesDTO.class);
+        return languagesDTO;
+    }
+    public ProjectDTO convertEntityToDto(Project project) {
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.LOOSE);
+        return modelMapper.map(project, ProjectDTO.class);
     }
 
+    //    private ContactForm convertDtoToEntity(ContactFormDTO contactFormDTO) {
+//        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+//        ContactForm contactForm = new ContactForm();
+//        modelMapper.map(contactFormDTO, contactForm);
+//        return contactForm;
+//    }
     public String saveUserDetails(ContactForm contactForm){
         contactFormRepository.save(contactForm);
         return "Data Saved";
@@ -66,22 +97,36 @@ public class ContactFormService {
                 .map(this::convertEntityToDto)
                 .collect(Collectors.toList());
     }
-    public List<Certifications> getCertification(){
-        return certificationsRepository.findAll();
+    public List<CertificationDTO> getCertification() {
+        List<Certifications> certifications = certificationsRepository.findAll();
+        return certifications.stream()
+                .map(this::convertEntityToDto)
+                .collect(Collectors.toList());
     }
-    public List<Education> getEducation(){
-        return educationRepository.findAll();
+    public List<EducationDTO> getEducation() {
+        List<Education> educations = educationRepository.findAll();
+        return educations.stream()
+                .map(this::convertEntityToDto)
+                .collect(Collectors.toList());
     }
-    public List<Internships> getInternship(){
-        return internshipRepository.findAll();
+    public List<InternshipDTO> getInternship() {
+        List<Internships> internships = internshipRepository.findAll();
+        return internships.stream()
+                .map(this::convertEntityToDto)
+                .collect(Collectors.toList());
     }
-    public List<Languages> getLanguage(){
-        return languagesRepository.findAll();
+    public List<LanguagesDTO> getLanguage() {
+        List<Languages> languages = languagesRepository.findAll();
+        return languages.stream()
+                .map(this::convertEntityToDto)
+                .collect(Collectors.toList());
     }
-    public List<Project> getProject(){
-        return projectRepository.findAll();
+    public List<ProjectDTO> getProject() {
+        List<Project> projects = projectRepository.findAll();
+        return projects.stream()
+                .map(this::convertEntityToDto)
+                .collect(Collectors.toList());
     }
-
     public String saveCertification(Certifications certifications){
         certificationsRepository.save(certifications);
         return "Data Saved";
