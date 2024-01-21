@@ -4,7 +4,6 @@ import com.sivaprakash.portfolio.DTO.*;
 import com.sivaprakash.portfolio.Entity.*;
 import com.sivaprakash.portfolio.Repository.*;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,43 +39,21 @@ public class ContactFormService {
     private ModelMapper modelMapper;
 
     public ContactFormDTO convertEntityToDto(ContactForm contactForm) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        ContactFormDTO contactFormDTO = new ContactFormDTO();
-        contactFormDTO = modelMapper.map(contactForm, ContactFormDTO.class);
-        return contactFormDTO;
+        return modelMapper.map(contactForm, ContactFormDTO.class);
     }
     public CertificationDTO convertEntityToDto(Certifications certifications) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        CertificationDTO certificationDTO = new CertificationDTO();
-        certificationDTO = modelMapper.map(certifications, CertificationDTO.class);
-        return certificationDTO;
+        return modelMapper.map(certifications, CertificationDTO.class);
     }
     public EducationDTO convertEntityToDto(Education education) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        EducationDTO educationDTO = new EducationDTO();
-        educationDTO = modelMapper.map(education, EducationDTO.class);
-        return educationDTO;
+        return modelMapper.map(education, EducationDTO.class);
     }
     public InternshipDTO convertEntityToDto(Internships internships) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        InternshipDTO internshipDTO = new InternshipDTO();
-        internshipDTO = modelMapper.map(internships, InternshipDTO.class);
-        return internshipDTO;
+        return modelMapper.map(internships, InternshipDTO.class);
     }
     public LanguagesDTO convertEntityToDto(Languages languages) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
-        LanguagesDTO languagesDTO = new LanguagesDTO();
-        languagesDTO = modelMapper.map(languages, LanguagesDTO.class);
-        return languagesDTO;
+        return modelMapper.map(languages, LanguagesDTO.class);
     }
     public ProjectDTO convertEntityToDto(Project project) {
-        modelMapper.getConfiguration()
-                .setMatchingStrategy(MatchingStrategies.LOOSE);
         return modelMapper.map(project, ProjectDTO.class);
     }
 
